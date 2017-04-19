@@ -6,6 +6,10 @@ def package_dir(): return os.path.realpath(__file__).split('/package')[0] + '/pa
 def add_repos():
   distribution = platform.linux_distribution()[0].lower()
   #TODO: add ubuntu
+
+  # quick fix for CENTOS ONLY!!!!!!
+  repo_dir = package_dir()+'files/repos/rhel6/'
+  os_repo_dir = '/etc/yum.repos.d/'
   if distribution in ['centos', 'redhat'] :
     repo_dir = package_dir()+'files/repos/rhel6/'
     os_repo_dir = '/etc/yum.repos.d/'
@@ -29,4 +33,3 @@ def stop(pid_file):
   with open(pid_file, 'r') as fp:
     try:os.kill(int(fp.read().strip()), signal.SIGTERM)
     except OSError: pass
-
