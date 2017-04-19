@@ -17,8 +17,9 @@ and add a port forwarding rule for port 9999:
 
 **Stack Install Directions:**
 ```
-git clone https://github.com/randerzander/jupyter-service
-sudo cp -r jupyter-service /var/lib/ambari-server/resources/stacks/HDP/2.2/services/
+git clone https://github.com/fonylew/jupyter-service
+VERSION=`hdp-select status hadoop-client | sed 's/hadoop-client - \([0-9]\.[0-9]\).*/\1/'`
+sudo cp -r jupyter-service /var/lib/ambari-server/resources/stacks/HDP/$VERSION/services/
 sudo service ambari-server restart
 sudo service ambari-agent restart
 ```
